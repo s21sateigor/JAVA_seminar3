@@ -1,5 +1,5 @@
 package model;
 
-public interface posts {
+public interface PostType {
     void createPost();
 }

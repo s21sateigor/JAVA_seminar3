@@ -2,12 +2,11 @@ package model;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import model.users.User;
+import users.User;
 
 import java.util.ArrayList;
 
 @AllArgsConstructor
-@NoArgsConstructor
 public class Page {
     private String title;
     private String description;

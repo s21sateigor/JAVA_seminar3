@@ -1,4 +1,4 @@
-package model.users;
+package users;
 
 public class PrivateUser {
 }

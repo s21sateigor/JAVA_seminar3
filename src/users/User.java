@@ -1,6 +1,11 @@
-package model.users;
+package users;
 
-public abstract class User extends GuestUser {
+import model.Page;
+import model.Post;
+import model.PostType;
+import service.MainService;
+
+public abstract class User extends GuestUser implements PostType {
     private String username;
     private String encodedPassword;
     private String name;
@@ -68,12 +73,23 @@ public abstract class User extends GuestUser {
         return "RU No." + getGeneratedId() + ": " + name + " " + surname + ", " + username;
     }
 
-    public void login(){
-
+    public boolean login(){
+        for(User temp: MainService.allRegisteredUsers){
+            if(temp.getUsername().equals(username) && temp.getEncodedPassword().equals(encodedPassword)) {
+                return true;
+            }
+        } return false;
     }
 
-    public void followPage(){
-
+    public void followPage(Page page) throws Exception{
+        if(page == null){
+            throw (new Exception("Page not found!"));
+        }
+        page.addFollower(this);
     }
+
+    //TODO unFollowPage
+
+    public abstract void createPost(Post post, PostType type);
 
 }
