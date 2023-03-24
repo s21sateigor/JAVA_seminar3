@@ -1,11 +1,6 @@
 package model.users;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
-@AllArgsConstructor
-public abstract class User {
+public abstract class User extends GuestUser {
     private String username;
     private String encodedPassword;
     private String name;
@@ -50,6 +45,27 @@ public abstract class User {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public User(){
+        super();
+        setUsername("default.user");
+        setEncodedPassword("default.password");
+        setName("default.name");
+        setSurname("default.surname");
+    }
+
+    public User(String name, String surname, String username, String password){
+        super();
+        setName(name);
+        setSurname(surname);
+        setUsername(username);
+        setEncodedPassword(password);
+    }
+
+    @Override
+    public String toString() {
+        return "RU No." + getGeneratedId() + ": " + name + " " + surname + ", " + username;
     }
 
     public void login(){
