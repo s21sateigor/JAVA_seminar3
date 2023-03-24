@@ -1,16 +1,17 @@
 package model;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @AllArgsConstructor
-@NoArgsConstructor
 public class Post {
     private String msg;
     private LocalDateTime dateTime;
     //TODO need to change to ArrayList of User, which set the like to this post
-    private int countOfLikes;
+    private int countOfLikes = 0;
 
     public String getMsg() {
         return msg;
@@ -36,8 +37,22 @@ public class Post {
         return countOfLikes;
     }
 
-
     public void increaseLikes(){
         countOfLikes++;
+    }
+
+    public Post(){
+        setDateTime();
+        setMsg("New Post");
+    }
+
+    public Post(String msg){
+        setMsg(msg);
+    }
+
+    @Override
+    public String toString() {
+        return dateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm:ss"))
+                + "--> " + msg + " (" + countOfLikes + ") ";
     }
 }
