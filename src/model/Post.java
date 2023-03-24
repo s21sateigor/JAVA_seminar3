@@ -3,42 +3,41 @@ package model;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Post {
-    String msg;
-    Date date;
-    int countOfLikes;
+    private String msg;
+    private LocalDateTime dateTime;
+    //TODO need to change to ArrayList of User, which set the like to this post
+    private int countOfLikes;
 
     public String getMsg() {
         return msg;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMsg(String inputMsg) {
+        if(inputMsg!=null && inputMsg.length() > 3){
+            msg = inputMsg;
+        } else {
+            msg = "-----";
+        }
     }
 
-    public Date getDate() {
-        return date;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDateTime() {
+        this.dateTime = LocalDateTime.now();
     }
 
     public int getCountOfLikes() {
         return countOfLikes;
     }
 
-    public void setCountOfLikes(int countOfLikes) {
-        this.countOfLikes = countOfLikes;
-    }
 
-    @Override
-    public String toString() {
-        return "Post{" +
-                "msg='" + msg + '\'' +
-                '}';
+    public void increaseLikes(){
+        countOfLikes++;
     }
 }
