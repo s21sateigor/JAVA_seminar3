@@ -5,7 +5,7 @@ import model.Post;
 import model.PostType;
 import service.MainService;
 
-public abstract class User extends GuestUser implements PostType {
+public abstract class User extends GuestUser{
     private String username;
     private String encodedPassword;
     private String name;
@@ -90,6 +90,6 @@ public abstract class User extends GuestUser implements PostType {
 
     //TODO unFollowPage
 
-    public abstract void createPost(Post post, PostType type);
+    public abstract Post createPost(Post post, PostType type);
 
 }

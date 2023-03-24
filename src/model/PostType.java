@@ -1,5 +1,5 @@
 package model;
 
-public interface PostType {
-    void createPost();
+public enum PostType {
+    privatePost, publicPost
 }
