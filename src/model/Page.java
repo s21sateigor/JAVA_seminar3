@@ -71,4 +71,20 @@ public class Page {
         }
     }
 
+    //constructors
+    public Page(){
+        setTitle("--TITLE--");
+        setDescription("--THIS IS VERY GOOD DESCRIPTION--");
+    }
+
+    public Page(String title, String description){
+        setTitle(title);
+        setDescription(description);
+    }
+
+    //toString
+
+    public String toString(){
+        return title + "( " + description + ") --> " + postsInPage + "--> " + followers.size();
+    }
 }
