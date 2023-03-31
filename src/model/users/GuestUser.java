@@ -1,8 +1,6 @@
 package model.users;
 
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 public class GuestUser {
     private long generatedId;
     private static long idCounter = 0;
