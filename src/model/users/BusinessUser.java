@@ -34,4 +34,8 @@ public class BusinessUser extends User{
             page.getPostsInPage().add(post);
         }
     }
+
+    public BusinessUser(String name, String surname, String username, String password) {
+        super(name, surname, username, password);
+    }
 }
