@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class MainService
 {
     public static ArrayList<User> allRegisteredUsers = new ArrayList<>();
-    public static void main(String[] args) {
+    public static void main(String[] args){
         //TODO
         //1. create 2 Guest User objects
         GuestUser guestUser = new GuestUser();
@@ -71,10 +71,55 @@ public class MainService
         }
 
         //8. verify login func.
+        //guestUser.login(); <--- nevar
+        System.out.println(privateUser.login());
+
         //9. verify followPage func.
+        try {
+            privateUser.followPage(p1);
+            privateUser2.followPage(p1);
+            privateUser2.followPage(p2);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+//        System.out.println(p1.getFollowers());
+//        System.out.println(p2.getFollowers());
+
         //10. verify addFollower func.
+        p1.addFollower(privateUser);
+        p1.addFollower(privateUser2);
+        System.out.println(p1.getFollowers());
         //11. verify removeFollower func.
         //12. verify increaseLikes func.
+        for(int i = 0; i < 5; i++){
+            privateUser.getAllPrivatePosts().get(0).increaseLikes();
+        }
 
+        for(int i = 0; i < 10; i++){
+            businessUser.getAllPages().get(0).getPostsInPage().get(0).increaseLikes();
+        }
+
+        for(Post temp: privateUser.getAllPrivatePosts()){
+            System.out.println(temp);
+        }
+
+        for(Post temp: privateUser2.getAllPrivatePosts()){
+            System.out.println(temp);
+        }
+
+        System.out.println("---------");
+
+        for(Post temp: businessUser.getAllPages().get(0).getPostsInPage()){
+            System.out.println(temp);
+        }
+        System.out.println("-------------------");
+        System.out.println(guestUser.findUsersByNameOrSurnameOrUsername("sia"));
+
+        System.out.println("-------------------");
+        System.out.println(privateUser.findPagesByTitleOrDescription("Vents"));
+
+        System.out.println("--------------------");
+        System.out.println(businessUser.findPublicPostsInPrivateUser("atlaid"));
     }
 }
