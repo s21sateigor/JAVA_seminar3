@@ -1,8 +1,7 @@
 package model;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import users.User;
+import model.users.User;
 
 import java.util.ArrayList;
 

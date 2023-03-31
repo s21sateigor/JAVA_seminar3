@@ -1,9 +1,11 @@
-package users;
+package model.users;
 
 import model.Page;
 import model.Post;
 import model.PostType;
 import service.MainService;
+
+import java.security.MessageDigest;
 
 public abstract class User extends GuestUser{
     private String username;
@@ -29,7 +31,14 @@ public abstract class User extends GuestUser{
 
     public void setEncodedPassword(String inputEncodedPassword) {
         if(encodedPassword != null && encodedPassword.matches("[A-Za-z0-0]{8,20}")){
-            encodedPassword = inputEncodedPassword;
+            try {
+                MessageDigest messageDigest = MessageDigest.getInstance("MD5");
+                messageDigest.update(inputEncodedPassword.getBytes());
+                encodedPassword = new String(messageDigest.digest());
+            }
+            catch (Exception e){
+                encodedPassword = "defaultpassword";
+            }
         } else {
             encodedPassword = "defaultpassword";
         }
