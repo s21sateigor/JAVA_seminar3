@@ -1,5 +1,6 @@
 package service;
 
+import model.users.BusinessUser;
 import model.users.GuestUser;
 import model.users.PrivateUser;
 import model.users.User;
@@ -16,13 +17,22 @@ public class MainService
         GuestUser guestUser2 = new GuestUser();
         System.out.println(guestUser);
         System.out.println(guestUser2);
+        System.out.println("-----");
         //2. create 2 Private User objects
-//        PrivateUser privateUser = new PrivateUser("Jānis", "Kalniņš","janis.kalnins",);
-//        PrivateUser privateUser2 = new PrivateUser();
-//        allRegisteredUsers.add(privateUser);
-//        allRegisteredUsers.add(privateUser2);
+        //TODO create register function for users
+        //public boolean register(String name, String surname, String username, String password)
+        PrivateUser privateUser = new PrivateUser("Jānis", "Kalniņš","janis.kalnins","12345678");
+        PrivateUser privateUser2 = new PrivateUser("Faraons", "Sethijs","seth.pharaoh","87654321");
+        allRegisteredUsers.add(privateUser);
+        allRegisteredUsers.add(privateUser2);
         System.out.println(allRegisteredUsers);
+        System.out.println("------");
         //3. create 2 Business User objects
+        //TODO create register function for users
+        BusinessUser businessUser = new BusinessUser("SIA", "Baroks", "sia.baroks","68686868");
+        BusinessUser businessUser2 = new BusinessUser("SIA", "Dators", "sia.dators","69696969");
+        allRegisteredUsers.add(businessUser);
+        allRegisteredUsers.add(businessUser2);
         //4. create 1 private and 1 public posts for each Private User
         //5. create page for private user --> it is not allowed in our system
         //6. create at least one page for each Business User
