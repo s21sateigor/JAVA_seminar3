@@ -43,6 +43,7 @@ public class Post {
     }
 
     public Post(String msg) {
+        setDateTime();
         setMsg(msg);
     }
 

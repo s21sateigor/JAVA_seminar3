@@ -1,5 +1,8 @@
 package service;
 
+import model.Page;
+import model.Post;
+import model.PostType;
 import model.users.BusinessUser;
 import model.users.GuestUser;
 import model.users.PrivateUser;
@@ -17,7 +20,7 @@ public class MainService
         GuestUser guestUser2 = new GuestUser();
         System.out.println(guestUser);
         System.out.println(guestUser2);
-        System.out.println("-----");
+        System.out.println("------");
         //2. create 2 Private User objects
         //TODO create register function for users
         //public boolean register(String name, String surname, String username, String password)
@@ -34,9 +37,38 @@ public class MainService
         allRegisteredUsers.add(businessUser);
         allRegisteredUsers.add(businessUser2);
         //4. create 1 private and 1 public posts for each Private User
+        privateUser.createPost(new Post("Man patīk programmēt!"), PostType.publicPost);
+        privateUser.createPost(new Post("Man šodien viss ir apnicis."), PostType.privatePost);
+        privateUser2.createPost(new Post("Man šodien jāiet pie ārsta."), PostType.privatePost);
+
+        for(Post temp: privateUser.getAllPublicPosts()){
+            System.out.println(temp);
+        }
+
+        for(Post temp: privateUser2.getAllPrivatePosts()){
+            System.out.println(temp);
+        }
+
+
         //5. create page for private user --> it is not allowed in our system
+        //PrivateUser.addPage(); -- nevar uztaisit!
         //6. create at least one page for each Business User
+        Page p1 = new Page("Mūzikas instrumenti Ventspilī", "Informācija par mūzikas instrumentiem Ventspilī.");
+        businessUser.addPage(p1);
+        Page p2 = new Page("Mūzikas instrumenti Liepājā", "Informācija par mūzikas instrumentiem Liepājā");
+        businessUser.addPage(p2);
+
+
         //7. create at least one post in each page
+        businessUser.createPostInPage(p1, businessUser.createPost(new Post("Ventspils svētkos 20% atlaide rozēm"), PostType.publicPost));
+        businessUser.createPostInPage(p2, businessUser.createPost(new Post("Liepājas svētkos 10% atlaide tulpēm"), PostType.publicPost));
+        businessUser.createPostInPage(p1, businessUser.createPost(new Post("Narcises par brīvu!"), PostType.publicPost));
+
+        System.out.println("--------");
+
+        for(Post temp: businessUser.getAllPages().get(0).getPostsInPage()){
+            System.out.println(temp);
+        }
 
         //8. verify login func.
         //9. verify followPage func.
